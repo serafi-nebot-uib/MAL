@@ -1,4 +1,4 @@
-function [rmat, rind] = gaussify_upper_triangular(matrix, ind)
+function [rmat, rind] = gaussify(matrix, ind)
 	mrows = rows(matrix);
 	mcols = columns(matrix);
 	rmat = matrix;
