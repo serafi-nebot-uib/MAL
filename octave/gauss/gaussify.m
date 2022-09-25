@@ -16,6 +16,10 @@ function [rmat, rind] = gaussify(matrix, ind)
 	rmat = matrix;
 	rind = ind;
 
+	if mrows != mcols
+		error("supplied matrix is not a square matrix");
+	end
+
 	# gaussian elimination
 	for i = 1:mrows - 1
 		for j = i + 1:mrows

@@ -2,6 +2,11 @@ function [result] = lower_triangular(matrix, ind)
 	# Solve a lower triangular system of equations.
 	mrows = rows(matrix);
 	mcols = columns(matrix);
+
+	if mrows != mcols
+		error("supplied matrix is not a square matrix");
+	end
+
 	result = zeros(mcols, 1);
 	result(1) = ind(1) / matrix(1, 1);
 

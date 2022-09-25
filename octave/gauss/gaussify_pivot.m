@@ -16,6 +16,10 @@ function [rmat, rind] = gaussify_pivot(matrix, ind)
 	rmat = matrix;
 	rind = ind;
 
+	if mrows != mcols
+		error("supplied matrix is not a square matrix");
+	end
+
 	for i = 1:mrows - 1
 		# find the greatest value inside the current column
 		gri = i; # greatest row index
