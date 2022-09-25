@@ -6,7 +6,7 @@ function [rmat, rind] = gaussify_pivot(matrix, ind)
 
 	for i = 1:mrows - 1
 		greatest = i;
-		for j = i + 1:mrows
+		for j = i:mrows
 			if abs(rmat(j, i)) > abs(rmat(greatest, i))
 				greatest = j;
 			end
