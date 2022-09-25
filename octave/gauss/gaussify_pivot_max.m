@@ -1,4 +1,17 @@
 function [rmat, rind, rpos] = gaussify_pivot_max(matrix, ind)
+	# Convert a system of equations to upper triangular.
+	#	Converts a system of equations to an equilavent upper triangular system of equations
+	#	using maximal pivoting and gaussian elimination.
+	#
+	# Params:
+	#	matrix: matrix containing the system of equation's terms
+	#	ind: vector containing the system of equation's independent terms
+	#
+	# Returns:
+	#	vector[rmat, rind, rpos]
+	#		rmat: converted matrix
+	#		rind: converted independent terms vector
+	#		rpos: solution order
 	mrows = rows(matrix);
 	mcols = columns(matrix);
 	rmat = matrix;
@@ -6,6 +19,7 @@ function [rmat, rind, rpos] = gaussify_pivot_max(matrix, ind)
 	rpos = 1:mrows;
 
 	for i = 1:mrows - 1
+		# find the greatest value inside the current submatrix
 		gri = i; # greatest row index
 		gci = i; # greatest column index
 		for j = i:mrows
@@ -39,6 +53,7 @@ function [rmat, rind, rpos] = gaussify_pivot_max(matrix, ind)
 			rpos(gci) = tmp_pos(i);
 		end
 
+		# gaussian elimination
 		for j = i + 1:mrows
 			mult = rmat(j, i) / rmat(i, i);
 			for k = 1:mcols

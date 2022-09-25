@@ -1,4 +1,5 @@
 function [result] = lower_triangular(matrix, ind)
+	# Solve a lower triangular system of equations.
 	mrows = rows(matrix);
 	mcols = columns(matrix);
 	result = zeros(mcols, 1);

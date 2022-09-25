@@ -1,4 +1,5 @@
 function [result] = upper_triangular(matrix, ind)
+	# Solve an upper triangular system of equations.
 	mrows = rows(matrix);
 	mcols = columns(matrix);
 	result = zeros(mcols, 1);
