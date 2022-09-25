@@ -3,14 +3,15 @@ function [result] = lower_triangular(matrix, ind)
 	mrows = rows(matrix);
 	mcols = columns(matrix);
 	result = zeros(mcols, 1);
-	result(mcols) = ind(1) / matrix(1, mcols);
+	result(1) = ind(1) / matrix(1, 1);
 
 	for i = 2:mrows
 		ind_result = ind(i);
-		for j = mcols - (i - 2):mcols
+		for j = i - 1:-1:1
+			prev = ind_result;
 			ind_result -= matrix(i, j) * result(j);
 		end
-		result(mrows - (i - 1)) = ind_result / matrix(i, mcols - (i - 1));
+		result(i) = ind_result / matrix(i, i);
 	end
 end
 
