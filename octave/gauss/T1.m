@@ -29,3 +29,4 @@ printf("\r\n");
 printf("Solution:\r\n");
 result = upper_triangular(rmat, rind);
 disp(result);
+
