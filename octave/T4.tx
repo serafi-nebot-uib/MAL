@@ -256,6 +256,6 @@ Gauss pivotaje maximal:
 	4.5227e-11
 
 - ¿Ha influido el orden de c en los errores? ¿Por qué?
-	Sí, al tener el vector c ordenado de mayor a menor, y en consecuencia la matriz de coeficientes,
+	Sí, al tener el vector "c" ordenado de mayor a menor, y en consecuencia la matriz de coeficientes,
 	la optimización que realizan Gauss Pivotaje por Columnas y Gauss Pivotaje Maximal, en parte, ya esta hecha.
-	Por ello el resultado del método de Gauss (sin pivotaje columna/maximal) tiene una gran diferencia al ejercicio anterior.
+	Por ello el resultado del método de Gauss (sin pivotaje columna/maximal) supone una gran diferencia al ejercicio anterior.
