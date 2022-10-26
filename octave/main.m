@@ -1,38 +1,54 @@
 function main
-	test_fact_lu();
+	matrix = [
+		1, 3, 0;
+		2, 1, -1;
+		2, 4, -1
+	];
+	test_gauss_partial_pivot(matrix, zeros(3, 1));
+	# test_fact_lu(matrix);
+	test_fact_lu_pivot(matrix);
 end
 
-function test_fact_lu()
+function test_fact_lu_pivot(matrix)
+	printf("Fact LU pivot\r\n");
+	printf("Start matrix:\r\n");
+	disp(matrix);
+	printf("\r\n");
+
+	[perm, low, up] = fact_lu_pivot(matrix);
+	printf("Perm:\r\n");
+	disp(perm);
+	printf("Upper:\r\n");
+	disp(up);
+	printf("Lower:\r\n");
+	disp(low);
+	printf("\r\n");
+	printf("Solution perm*matrix = low*up\r\n");
+	disp(perm * matrix);
+	disp(low * up);
+	printf("\r\n");
+end
+
+function test_fact_lu(matrix)
 	printf("Fact LU\r\n");
 	printf("Start matrix:\r\n");
-	matrix = [
-		1, 3, 2;
-		1, -1, -4;
-		0, 3, 6;
-	];
 	disp(matrix);
 	printf("\r\n");
 
 	[low, up] = fact_lu(matrix);
-	printf("Lower:\r\n");
-	disp(low);
 	printf("Upper:\r\n");
 	disp(up);
+	printf("Lower:\r\n");
+	disp(low);
 	printf("\r\n");
 	printf("Solution low*up\r\n");
 	disp(low * up);
 	printf("\r\n");
 end
 
-function test_upper_triangular
+function test_upper_triangular(matrix, ind)
 	printf("Upper Triangular\r\n")
 	printf("Start matrix:\r\n");
-	matrix = [
-		1, 2, 3;
-		0, 1, -1;
-		0, 0, 1
-	];
-	ind = [3, -1, 2];
 	disp(matrix);
 	printf("Ind terms:\r\n");
 	disp(ind);
@@ -43,15 +59,9 @@ function test_upper_triangular
 	disp(result);
 end
 
-function test_lower_triangular
+function test_lower_triangular(matrix, ind)
 	printf("Lower Triangular\r\n")
 	printf("Start matrix:\r\n");
-	matrix = [
-		4, 0, 0;
-		3, -9, 0;
-		-8, 1, 2
-	];
-	ind = [-1, 6, 8];
 	disp(matrix);
 	printf("Ind terms:\r\n");
 	disp(ind);
@@ -62,11 +72,9 @@ function test_lower_triangular
 	disp(result);
 end
 
-function test_gaussify
+function test_gaussify(matrix, ind)
 	printf("Gaussify\r\n");
 	printf("Start matrix:\r\n");
-	matrix = [1, 3, 0;  2, 1, -1; 2, 4, -1];
-	ind = [4, 0, 2];
 	disp(matrix);
 	printf("Ind terms:\r\n");
 	disp(ind);
@@ -83,11 +91,9 @@ function test_gaussify
 	disp(result);
 end
 
-function test_gauss_partial_pivot
+function test_gauss_partial_pivot(matrix, ind)
 	printf("Gaussify Pivot\r\n");
 	printf("Start matrix:\r\n");
-	matrix = [1, 3, 0;  2, 1, -1; 2, 4, -1];
-	ind = [4, 0, 2];
 	disp(matrix);
 	printf("Ind terms:\r\n");
 	disp(ind);
@@ -105,11 +111,9 @@ function test_gauss_partial_pivot
 	disp(result);
 end
 
-function test_gauss_maximal_pivot
+function test_gauss_maximal_pivot(matrix, ind)
 	printf("Gaussify Pivot Maximal\r\n");
 	printf("Start matrix:\r\n");
-	matrix = [1, 3, 0;  2, 1, -1; 2, 4, -1];
-	ind = [4, 0, 2];
 	disp(matrix);
 	printf("Ind terms:\r\n");
 	disp(ind);

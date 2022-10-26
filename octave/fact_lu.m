@@ -1,7 +1,8 @@
 function [low, up] = fact_lu(matrix)
-	# Factorize a matrix
-	#	Factorizes a matrix to a lower and upper triangular matrices,
-	#	so that low * up = matrix.
+	# Perform a matrix LU decomposition
+	#	Factorizes a square matrix to lower and upper triangular matrices,
+	#	where A = original matrix, L = lower triangular matrix, U = upper triangular matrix,
+	#	so that A = LU
 	#
 	# Params:
 	#	matrix: matrix to factorize (must be a square matrix)
