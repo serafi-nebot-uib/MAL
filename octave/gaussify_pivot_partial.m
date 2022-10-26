@@ -1,4 +1,4 @@
-function [rmat, rind] = gaussify_pivot(matrix, ind)
+function [rmat, rind] = gaussify_pivot_partial(matrix, ind)
 	# Convert a system of equations to upper triangular.
 	#	Converts a system of equations to an equilavent upper triangular system of equations
 	#	using partial pivoting and gaussian elimination.

@@ -1,4 +1,4 @@
-function [rmat, rind, rpos] = gaussify_pivot_max(matrix, ind)
+function [rmat, rind, rpos] = gaussify_pivot_full(matrix, ind)
 	# Convert a system of equations to upper triangular.
 	#	Converts a system of equations to an equilavent upper triangular system of equations
 	#	using maximal pivoting and gaussian elimination.

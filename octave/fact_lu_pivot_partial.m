@@ -1,7 +1,7 @@
-function [perm, low, up] = fact_lu_pivot(matrix, ind)
+function [perm, low, up] = fact_lu_pivot_partial(matrix, ind)
 	# Perform a matrix PLU decomposition
 	#	Factorizes a square matrix to lower and upper triangular matrices
-	#	with partial pivoting, where A = original matrix, P = permutation matrix,
+	#	with partial pivoting, where A = original matrix, P = row permutation matrix,
 	#	L = lower triangular matrix, U = upper triangular matrix,
 	#	so that PA = LU
 	#
@@ -10,7 +10,7 @@ function [perm, low, up] = fact_lu_pivot(matrix, ind)
 	#
 	# Returns:
 	#	vector[perm, low, up]
-	#		perm: permutation matrix
+	#		perm: row permutation matrix
 	#		low: lower triangular factorized matrix
 	#		up: upper triangular factorized matrix
 	mrows = rows(matrix);

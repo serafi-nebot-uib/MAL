@@ -18,7 +18,7 @@ disp(ind);
 printf("\r\n");
 
 printf("Processed matrix:\r\n");
-[rmat, rind, pos] = gaussify_pivot_max(matrix, ind);
+[rmat, rind, pos] = gaussify_pivot_full(matrix, ind);
 disp(rmat);
 printf("Ind terms:\r\n");
 disp(rind);

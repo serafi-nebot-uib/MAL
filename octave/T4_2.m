@@ -56,7 +56,7 @@ printf("\r\n");
 
 printf("### GAUSS PIVOT ###\r\n");
 printf("Processed matrix:\r\n");
-[rmat, rind] = gaussify_pivot(matrix, ind);
+[rmat, rind] = gaussify_pivot_partial(matrix, ind);
 disp(rmat);
 printf("Ind terms:\r\n");
 disp(rind);
@@ -73,7 +73,7 @@ printf("\r\n");
 
 printf("### GAUSS PIVOT MAX ###\r\n");
 printf("Processed matrix:\r\n");
-[rmat, rind, rord] = gaussify_pivot_max(matrix, ind);
+[rmat, rind, rord] = gaussify_pivot_full(matrix, ind);
 disp(rmat);
 printf("Ind terms:\r\n");
 disp(rind);

@@ -19,7 +19,7 @@ disp(ind);
 printf("\r\n");
 
 printf("Processed matrix:\r\n");
-[rmat, rind] = gaussify_pivot(matrix, ind);
+[rmat, rind] = gaussify_pivot_partial(matrix, ind);
 disp(rmat);
 printf("Ind terms:\r\n");
 disp(rind);
