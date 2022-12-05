@@ -1,19 +1,19 @@
 function main
-	matrix = [
-		1, 2, 3;
-		0, 1, -1;
-		0, 0, 1
-	];
-	ind = [3, -1, 2];
-	test_upper_triangular(matrix, ind);
-
-	matrix = [
-		4, 0, 0;
-		3, -9, 0;
-		-8, 1, 2
-	];
-	ind = [-1, 6, 8];
-	test_lower_triangular(matrix, ind);
+	# matrix = [
+	# 	1, 2, 3;
+	# 	0, 1, -1;
+	# 	0, 0, 1
+	# ];
+	# ind = [3, -1, 2];
+	# test_upper_triangular(matrix, ind);
+	#
+	# matrix = [
+	# 	4, 0, 0;
+	# 	3, -9, 0;
+	# 	-8, 1, 2
+	# ];
+	# ind = [-1, 6, 8];
+	# test_lower_triangular(matrix, ind);
 
 	matrix = [
 		1, 3, 0;
@@ -21,18 +21,18 @@ function main
 		2, 4, -1
 	];
 	ind = [4, 0, 2];
-	test_gaussify(matrix, ind);
-	test_gaussify_pivot_partial(matrix, ind);
-	test_gaussify_pivot_full(matrix, ind);
-
-	matrix = [
-		1, 3, 0;
-		2, 1, -1;
-		2, 4, -1
-	];
-
-	test_fact_lu(matrix);
-	test_fact_lu_pivot_partial(matrix);
+	# test_gaussify(matrix, ind);
+	# test_gaussify_pivot_partial(matrix, ind);
+	# test_gaussify_pivot_full(matrix, ind);
+	#
+	# matrix = [
+	# 	1, 3, 0;
+	# 	2, 1, -1;
+	# 	2, 4, -1
+	# ];
+	#
+	# test_fact_lu(matrix);
+	# test_fact_lu_pivot_partial(matrix);
 	test_fact_lu_pivot_full(matrix);
 end
 
