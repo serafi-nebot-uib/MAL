@@ -41,10 +41,13 @@ function [perm_r, perm_c, low, up] = fact_lu_pivot_full(matrix)
 		if up(gri, gci) != 0
 			# permutate rows
 			tmp_up = up;
+			tmp_low = low;
 			tmp_perm_r = perm_r;
 			for j = 1:mcols
 				up(i, j) = tmp_up(gri, j);
 				up(gri, j) = tmp_up(i, j);
+				low(i, j) = tmp_low(gri, j);
+				low(gri, j) = tmp_low(i, j);
 				perm_r(i, j) = tmp_perm_r(gri, j);
 				perm_r(gri, j) = tmp_perm_r(i, j);
 			end
@@ -63,12 +66,14 @@ function [perm_r, perm_c, low, up] = fact_lu_pivot_full(matrix)
 		# gaussian elimination
 		for j = i + 1:mrows
 			mult = up(j, i) / up(i, i);
-			for k = 1:mcols
+			up(j, i) = 0; # force 0 for unstable matrices (ex: Vandermonde)
+			for k = i + 1:mcols
 				up(j, k) = up(j, k) - mult * up(i, k);
 			end
 			low(j, i) = mult;
 		end
 	end
+
 	for i = 1:mrows
 		low(i, i) = 1;
 	end

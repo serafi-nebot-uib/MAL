@@ -54,7 +54,8 @@ function [perm, low, up] = fact_lu_pivot_partial(matrix, ind)
 		# gaussian elimination
 		for j = i + 1:mrows
 			mult = up(j, i) / up(i, i);
-			for k = 1:mcols
+			up(j, i) = 0; # force 0 for unstable matrices (ex: Vandermonde)
+			for k = i + 1:mcols
 				up(j, k) = up(j, k) - mult * up(i, k);
 			end
 			low(j, i) = mult;
@@ -65,4 +66,3 @@ function [perm, low, up] = fact_lu_pivot_partial(matrix, ind)
 		low(i, i) = 1;
 	end
 end
-

@@ -151,8 +151,3 @@ disp(transpose(solution));
 printf("Error:\t\t\t");
 err = error_sol(solution, x);
 disp(err);
-printf("\r\n");
-
-disp(perm_r * matrix * perm_c);
-printf("\r\n");
-disp(low * up);

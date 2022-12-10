@@ -24,7 +24,8 @@ function [low, up] = fact_lu(matrix)
 	for i = 1:mrows - 1
 		for j = i + 1:mrows
 			mult = up(j, i) / up(i, i);
-			for k = 1:mcols
+			up(j, i) = 0; # force 0 for unstable matrices (ex: Vandermonde)
+			for k = i + 1:mcols
 				up(j, k) = up(j, k) - mult * up(i, k);
 			end
 			low(j, i) = mult;
