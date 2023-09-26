@@ -13,14 +13,8 @@ def guassify_pivot_partial(mat, ind):
   assert len(ind) == len(mat)
   assert all(len(mat[i]) == len(mat) for i in range(len(mat)))
   for j in range(0, len(mat) - 1):
-    mc = j
-    for i in range(j + 1, len(mat)):
-      if abs(mat[i][j]) > abs(mat[mc][j]): mc = i
-    print(mat)
-    mat[mc], mat[j] = mat[j], mat[mc]
-    ind[mc], ind[j] = ind[j], ind[mc]
-    print(mat)
-    print()
+    mc = max(range(len(mat)), key=lambda x: mat[x][j])
+    if mc != j: mat[mc], mat[j], ind[mc], ind[j] = mat[j], mat[mc], ind[j], ind[mc]
     for i in range(j + 1, len(mat)):
       a = mat[i][j] / mat[j][j]
       mat[i][j] = 0
