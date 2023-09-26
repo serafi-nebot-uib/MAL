@@ -1,4 +1,5 @@
 def gaussify(mat, ind):
+  assert len(ind) == len(mat)
   assert all(len(mat[i]) == len(mat) for i in range(len(mat)))
   for j in range(0, len(mat) - 1):
     for i in range(j + 1, len(mat)):
@@ -9,12 +10,17 @@ def gaussify(mat, ind):
   return mat, ind
 
 def guassify_pivot_partial(mat, ind):
+  assert len(ind) == len(mat)
   assert all(len(mat[i]) == len(mat) for i in range(len(mat)))
   for j in range(0, len(mat) - 1):
-    for i in range(j, len(mat)):
-      if abs(mat[i][j]) > abs(mat[j][j]):
-        mat[i], mat[j] = mat[j], mat[i]
-        ind[i], ind[j] = ind[j], ind[i]
+    mc = j
+    for i in range(j + 1, len(mat)):
+      if abs(mat[i][j]) > abs(mat[mc][j]): mc = i
+    print(mat)
+    mat[mc], mat[j] = mat[j], mat[mc]
+    ind[mc], ind[j] = ind[j], ind[mc]
+    print(mat)
+    print()
     for i in range(j + 1, len(mat)):
       a = mat[i][j] / mat[j][j]
       mat[i][j] = 0
