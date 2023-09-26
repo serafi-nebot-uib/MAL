@@ -1,0 +1,55 @@
+\documentclass{article}
+\title{Problems 1}
+\author{Serafí Nebot Ginard}
+\date{2023}
+
+\usepackage[parfill]{parskip}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{systeme}
+
+\begin{document}
+\maketitle
+\newpage
+
+\tableofcontents
+\newpage
+
+\section{Problem 1}
+\begin{equation}
+  \systeme{
+    x_2 + 4x_3 = -5,
+    x_1 + 3x_2 + 5x_3 = -2,
+    3x_1 + 7x_2 + 7x_3 = -6
+  }
+\end{equation}
+
+Permutate $eq_1$ and $eq_2$
+
+\[
+  \systeme{
+    x_1 + 3x_2 + 5x_3 = -2,
+    x_2 + 4x_3 = -5,
+    3x_1 + 7x_2 + 7x_3 = -6
+  }
+\]
+
+$eq_3 = eq_3 + eq_1 * -3$
+
+\[
+  \begin{aligned}
+      x_1 + 7x_2 + 7x_3 + (-3)(x_1 + 3x_2 + 5x_3) &= -6 + (-3)(-2) \\
+      x_1 + 7x_2 + 7x_3 + -3x_1 - 9x_2 - 15x_3 &= -6 + 6 \\
+      - 2x_1 - 9x_2 + -8x_3 &= 0
+  \end{aligned}
+\]
+
+\[
+  \systeme{
+    x_1 + 3x_2 + 5x_3 = -2,
+    x_2 + 4x_3 = -5,
+    - 2x_1 - 9x_2 + -8x_3 = 0
+  }
+\]
+
+\end{document}
