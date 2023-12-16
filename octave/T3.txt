@@ -1,0 +1,197 @@
+Autor: Serafí Nebot Ginard
+
+###### Problem 1 ######
+Start matrix:
+   3   7   1
+   0   2  -2
+   6   5   3
+Ind terms:
+  -3   1   0
+
+Intermediate matricies:
+   3   7   1
+   0   2  -2
+   6   5   3
+
+  -3   1   0
+
+
+   3   7   1
+   0   2  -2
+   0  -9   1
+
+  -3   1   6
+
+
+   3   7   1
+   0   2  -2
+   0   0  -8
+
+   -3.0000    1.0000   10.5000
+
+
+Processed matrix:
+   3   7   1
+   0   2  -2
+   0   0  -8
+Ind terms:
+   -3.0000    1.0000   10.5000
+
+Solution:
+   1.3333
+  -0.8125
+  -1.3125
+
+
+###### Problem 2 ######
+Start matrix:
+   1   3   1   5
+   1   4   2   6
+   1   5   3   7
+   1   6  -1   8
+Ind terms:
+   0   1   2  -2
+
+GAUSS
+Intermediate matricies:
+   1   3   1   5
+   0   1   1   1
+   1   5   3   7
+   1   6  -1   8
+
+   0   1   2  -2
+
+
+   1   3   1   5
+   0   1   1   1
+   0   2   2   2
+   1   6  -1   8
+
+   0   1   2  -2
+
+
+   1   3   1   5
+   0   1   1   1
+   0   2   2   2
+   0   3  -2   3
+
+   0   1   2  -2
+
+
+   1   3   1   5
+   0   1   1   1
+   0   0   0   0
+   0   3  -2   3
+
+   0   1   0  -2
+
+
+   1   3   1   5
+   0   1   1   1
+   0   0   0   0
+   0   0  -5   0
+
+   0   1   0  -5
+
+
+     1     3     1     5
+     0     1     1     1
+     0     0     0     0
+   NaN   NaN   NaN   NaN
+
+     0     1     0   NaN
+
+
+Processed matrix:
+     1     3     1     5
+     0     1     1     1
+     0     0     0     0
+   NaN   NaN   NaN   NaN
+Ind terms:
+     0     1     0   NaN
+
+Solution:
+   NaN
+   NaN
+   NaN
+   NaN
+
+
+GAUSS PARTIAL PIVOT
+Intermediate matrix:
+   1   3   1   5
+   0   1   1   1
+   1   5   3   7
+   1   6  -1   8
+
+   0   1   2  -2
+
+
+   1   3   1   5
+   0   1   1   1
+   0   2   2   2
+   1   6  -1   8
+
+   0   1   2  -2
+
+
+   1   3   1   5
+   0   1   1   1
+   0   2   2   2
+   0   3  -2   3
+
+   0   1   2  -2
+
+
+   1.0000   3.0000   1.0000   5.0000
+        0   3.0000  -2.0000   3.0000
+        0        0   3.3333        0
+        0   1.0000   1.0000   1.0000
+
+        0  -2.0000   3.3333   1.0000
+
+
+   1.0000   3.0000   1.0000   5.0000
+        0   3.0000  -2.0000   3.0000
+        0        0   3.3333        0
+        0        0   1.6667        0
+
+        0  -2.0000   3.3333   1.6667
+
+
+   1.0000   3.0000   1.0000   5.0000
+        0   3.0000  -2.0000   3.0000
+        0        0   3.3333        0
+        0        0        0        0
+
+        0  -2.0000   3.3333        0
+
+
+Processed matrix:
+   1.0000   3.0000   1.0000   5.0000
+        0   3.0000  -2.0000   3.0000
+        0        0   3.3333        0
+        0        0        0        0
+Ind terms:
+        0  -2.0000   3.3333        0
+
+Solution:
+   NaN
+   NaN
+   NaN
+   NaN
+
+El vector u = (0, 1, 2, -2) pertenece al espacio <v1, v2, v3, v4> porque el sistema de ecuaciones
+formado por los vectores v1, v2, v3, v4 y u tiene infinitas soluciones.
+
+Debido a que el conjunto de vectores v1, v2, v3, v4 es linealmente dependiente, es decir, hay al
+menos un vector redundante (v4 = v2 + 2 * v1) provoca que al procesar la matriz utilizando
+gauss se genere una ecuacion de todo ceros (ecuación redundante). En el caso de gauss normal esto
+ha provocado que al intentar eliminar la última fila se haya dividido por 0. Por este motivo la
+última ecuación son todo NaN (Not a Number; cero dividido por cero no esta definido). En cambio, en
+el caso de Gauss con pivotaje por columnas esto no ha ocurrido porque antes de eliminar cada fila se
+busca el coeficiente más grande dentro de la columna (cómo había un coeficiente mayor que cero no se
+ha producido la división cero entre cero). De todas formas, la solución del pivotaje por columnas es
+un vector de NaNs porque, al intentar resolver la última ecuación (todo ceros) se ha dividido por
+cero lo que ha resultado en un NaN. Después el NaN se ha arrastrado al resultado de las otras
+ecuaciones al substituir el valor de la primera incógnita resuelta.

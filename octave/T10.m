@@ -1,97 +1,74 @@
-printf("T10\r\n");
-printf("Start matrix:\r\n");
-matrix = [
-	1 / 10, 1 / 5, 1 / 20, 0;
-	1, -1, 1, -1;
-	0, 1, -2, 1;
-	100, 100 ^ 2, 100 ^ 3, 100 ^ 4
-];
-ind = [
-	1;
-	0;
-	-2;
-	-1
-];
-solution = [
-	247954999 / 275992600;
-	4224001803 / 1103970400;
-	799940199 / 275992600;
-	-32421011 / 1103970400
-];
-disp(matrix);
-printf("Ind terms:");
-disp(transpose(ind));
-printf("\r\n");
+A = vander([10; 15; 20; 25; 30; 35; 40]);
+b = [15; 30; 40; 55; 70; 85; 100];
+printf("A: \n");
+matprint(A);
+printf("\n");
 
-printf("A = LU decomposition\r\n");
-[low, up] = fact_lu(matrix);
-printf("Lower:\r\n");
-disp(low)
-printf("Upper:\r\n");
-disp(up)
-printf("\r\n");
+printf("b: \n");
+matprint(b);
+printf("\n");
 
-printf("A = LU decomposition - det(A)\r\n");
-printf("det(L) = %f\r\n", det(low));
-printf("det(U) = %f\r\n", det(up));
-printf("det(A) = det(L) * det(U) = %f\r\n", det(low) * det(up));
-printf("\r\n");
+printf("################################ A = LU ################################\n");
+[L, U] = fact_lu(A);
+printf("L: \n");
+matprint(L);
+printf("\n");
+printf("U: \n");
+matprint(U);
+printf("\n");
 
-printf("A = LU decomposition - solution\r\n");
-printf("Lc = b\r\n");
-c = lower_triangular(low, ind);
-printf("c = ");
-disp(transpose(c));
-printf("Ux = c\r\n");
-x = upper_triangular(up, c);
-printf("x = ");
-disp(transpose(x));
-printf("\r\n");
+c = lower_triangular(L, b);
+x1 = upper_triangular(U, c);
 
-printf("A = LU decomposition - solution error\r\n");
-printf("Solution:\t\t");
-disp(transpose(x));
-printf("Expected solution:\t");
-disp(transpose(solution));
-printf("Error:\t\t\t");
-err = error_sol(solution, x);
-disp(err);
-printf("\r\n");
+printf("x1:\n");
+matprint(x1);
+printf("\n");
 
-printf("PA = LU decomposition\r\n");
-[perm, low, up] = fact_lu_pivot_partial(matrix);
-printf("Permutation:\r\n");
-disp(perm)
-printf("Lower:\r\n");
-disp(low)
-printf("Upper:\r\n");
-disp(up)
-printf("\r\n");
+sol25_1 = poly(x1, 25);
+printf("sol[25]: %.15f\n", sol25_1);
+printf("err[25]: ");
+disp(55 - sol25_1);
+printf("\n");
 
-printf("PA = LU decomposition - det(A)\r\n");
-printf("det(P) = %f\r\n", det(perm));
-printf("det(L) = %f\r\n", det(low));
-printf("det(U) = %f\r\n", det(up));
-printf("det(A) = (1 / det(P)) * det(L) * det(U) = %f\r\n", (1 / det(perm)) * det(low) * det(up));
-printf("\r\n");
+printf("sol[37.5]: ");
+sol37_5_1 = poly(x1, 37.5);
+disp(sol37_5_1);
+printf("\n");
 
-printf("PA = LU decomposition - solution\r\n");
-printf("Lc = Pb\r\n");
-c = lower_triangular(low, perm * ind);
-printf("c = ");
-disp(transpose(c));
-printf("Ux = c\r\n");
-x = upper_triangular(up, c);
-printf("x = ");
-disp(transpose(x));
-printf("\r\n");
+printf("################################ PA = LU ################################\n");
+[P, L, U] = fact_lu_pivot_partial(A);
+printf("P: \n");
+matprint(P);
+printf("\n");
+printf("L: \n");
+matprint(L);
+printf("\n");
+printf("U: \n");
+matprint(U);
+printf("\n");
 
-printf("PA = LU decomposition - solution error\r\n");
-printf("Solution:\t\t");
-disp(transpose(x));
-printf("Expected solution:\t");
-disp(transpose(solution));
-printf("Error:\t\t\t");
-err = error_sol(solution, x);
-disp(err);
-printf("\r\n");
+c = lower_triangular(L, P * b);
+x2 = upper_triangular(U, c);
+
+printf("x2:\n");
+matprint(x2);
+printf("\n");
+
+sol25_2 = poly(x2, 25);
+printf("sol[25]: %.15f\n", sol25_2);
+printf("err[25]: ");
+disp(55 - sol25_2);
+printf("\n");
+
+printf("sol[37.5]: ");
+sol37_5_2 = poly(x2, 37.5);
+disp(sol37_5_2);
+printf("\n");
+
+# printf("diff(x):\n");
+# disp(x1 - x2)
+# printf("diff(25): ");
+# disp(sol25_1 - sol25_2);
+# printf("diff(37.5): ");
+# disp(sol37_5_1 - sol37_5_2);
+# printf("\n");
