@@ -10,7 +10,7 @@ T = [
 	0,		0,		0,		0,		0,		1/3,	0,		2/9,	1/3;
 ];
 
-Ti = inverse_lu(T);
+Ti = inverse_paqlu(T);
 disp(norm(Ti*T));
 printf("\r\n");
 disp(norm(inverse(T)*T));
