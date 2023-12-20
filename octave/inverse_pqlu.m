@@ -1,4 +1,4 @@
-function [B] = inverse_paqlu(A)
+function [B] = inverse_pqlu(A)
 	[P, Q, L, U] = fact_lu_pivot_full(A);
 	Pi = inverse(P);
 	B = eye(columns(A));

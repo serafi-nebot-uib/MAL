@@ -1,4 +1,4 @@
-function [perm_r, perm_c, low, up] = fact_lu_pivot_full(matrix)
+function [perm_r, perm_c, low, up] = fact_pqlu(matrix)
 	# Perform a matrix PLU decomposition
 	#	Factorizes a square matrix to lower and upper triangular matrices
 	#	with full pivoting, where A = original matrix, P = row permutation matrix,

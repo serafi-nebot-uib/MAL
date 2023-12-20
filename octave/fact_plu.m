@@ -1,4 +1,4 @@
-function [perm, low, up] = fact_lu_pivot_partial(matrix, ind)
+function [perm, low, up] = fact_plu(matrix, ind)
 	# Perform a matrix PLU decomposition
 	#	Factorizes a square matrix to lower and upper triangular matrices
 	#	with partial pivoting, where A = original matrix, P = row permutation matrix,
